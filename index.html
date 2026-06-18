@@ -224,7 +224,7 @@
   <body>
     <div id="root"></div>
     <script>
-const DBN='pos_v8',DBV=1;let db;
+const DBN='pos_bar_v1',DBV=1;let db;
 function openDB(){return new Promise((res,rej)=>{const r=indexedDB.open(DBN,DBV);r.onupgradeneeded=e=>{const d=e.target.result;['products','sales','staff'].forEach(s=>{if(!d.objectStoreNames.contains(s))d.createObjectStore(s,{keyPath:'id',autoIncrement:true});});};r.onsuccess=e=>{db=e.target.result;res();};r.onerror=rej;});}
 const dbAll=s=>new Promise(r=>{db.transaction(s,'readonly').objectStore(s).getAll().onsuccess=e=>r(e.target.result);});
 const dbPut=(s,v)=>new Promise(r=>{db.transaction(s,'readwrite').objectStore(s).put(v).onsuccess=e=>r(e.target.result);});
@@ -245,16 +245,29 @@ async function seed(){
   S.products=await dbAll('products');
   if(!S.products.length){
     const items=[
-      {name:'Americano',price:1500,stock:99,category:'Drinks',sizes:[{label:'S',price:1500},{label:'M',price:2000},{label:'L',price:2500}]},
-      {name:'Latte',price:2000,stock:99,category:'Drinks',sizes:[{label:'S',price:2000},{label:'M',price:2500},{label:'L',price:3000}]},
-      {name:'Matcha Latte',price:2500,stock:50,category:'Drinks',sizes:[{label:'S',price:2500},{label:'M',price:3000},{label:'L',price:3500}]},
-      {name:'Orange Juice',price:1800,stock:30,category:'Drinks',sizes:[]},
-      {name:'Croissant',price:1500,stock:20,category:'Food',sizes:[]},
-      {name:'Toast Set',price:2000,stock:15,category:'Food',sizes:[]},
-      {name:'Cheesecake',price:3000,stock:10,category:'Food',sizes:[{label:'Slice',price:3000},{label:'Whole',price:18000}]},
-      {name:'Banana Muffin',price:1200,stock:5,category:'Food',sizes:[]},
-      {name:'Water',price:500,stock:99,category:'Drinks',sizes:[]},
-      {name:'Pad Thai',price:3500,stock:20,category:'Food',sizes:[{label:'S',price:3500},{label:'L',price:5000}]},
+      // ── Drinks ──────────────────────────────────────────────────
+      {name:'Alpine Purified Water',price:500,stock:96,category:'Drinks',sizes:[]},
+      {name:'Aythaya Red Wine',price:30000,stock:15,category:'Drinks',sizes:[]},
+      {name:'Coca-Cola / Sprite',price:3200,stock:319,category:'Drinks',sizes:[]},
+      {name:'Geon-Bae Soju',price:7800,stock:47,category:'Drinks',sizes:[]},
+      {name:'Grand Royal Smooth',price:9000,stock:19,category:'Drinks',sizes:[{label:'L',price:9000},{label:'M',price:4800}]},
+      {name:'Heineken',price:6800,stock:10,category:'Drinks',sizes:[{label:'L',price:6800},{label:'M',price:5500}]},
+      {name:'Ice Cubes (ရေခဲ)',price:1000,stock:998,category:'Drinks',sizes:[]},
+      {name:'Mandalay Rum Red',price:7400,stock:49,category:'Drinks',sizes:[]},
+      {name:'Myanmar Beer (Large Bottle)',price:3600,stock:97,category:'Drinks',sizes:[{label:'S',price:3600},{label:'M',price:4800},{label:'L',price:6000}]},
+      {name:'Shark Energy Drink',price:3300,stock:296,category:'Drinks',sizes:[]},
+      {name:'Signature Whisky',price:12500,stock:99,category:'Drinks',sizes:[]},
+      {name:'Soda Water',price:1500,stock:78,category:'Drinks',sizes:[]},
+      {name:'Yoma Beer',price:3500,stock:4,category:'Drinks',sizes:[{label:'S',price:3500},{label:'M',price:4500},{label:'L',price:5800}]},
+      // ── Bar Snacks ───────────────────────────────────────────────
+      {name:'ကြက်ကင် (Grilled Chicken - Half)',price:7500,stock:0,category:'Bar Snacks',sizes:[]},
+      {name:'ကြက်ကင် (Grilled Chicken - Whole)',price:14000,stock:0,category:'Bar Snacks',sizes:[]},
+      {name:'ကြက်တောင်ပံကြော်',price:6000,stock:0,category:'Bar Snacks',sizes:[]},
+      {name:'ချဉ်စပ်ပုစွန်သုပ် (Spicy Shrimp Salad)',price:8000,stock:0,category:'Bar Snacks',sizes:[]},
+      {name:'ဖရုံစေ့ (Pumpkin Seeds)',price:1800,stock:20,category:'Bar Snacks',sizes:[]},
+      {name:'မြေပဲလှော်',price:500,stock:28,category:'Bar Snacks',sizes:[]},
+      {name:'အမဲခြောက်ဖုတ်',price:5000,stock:18,category:'Bar Snacks',sizes:[]},
+      {name:'အာလူးကြော်',price:800,stock:79,category:'Bar Snacks',sizes:[{label:'တိုးတိုး',price:800},{label:'လျှာကျွမ်းထိုး',price:500}]},
     ];
     for(const i of items)await dbAdd('products',i);
     S.products=await dbAll('products');
