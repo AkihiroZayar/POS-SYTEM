@@ -288,27 +288,78 @@ const TR={
     hasSizes:'Has sizes (S / M / L etc.)',addSize:'+ Add size',
     sizeName:'Size label',sizePrice:'Price (Ks)',pickSize:'Choose size',
     sizes:'Sizes'},
-  my:{app:'ရောင်းချမှုစနစ်',pos:'ရောင်းချမှု',inv:'ကုန်ပစ္စည်း',rep:'အစီရင်ခံစာ',stf:'ဝန်ထမ်း',
-    srch:'ကုန်ပစ္စည်းရှာရန်…',cart:'စျေးခြင်း',clr:'ဖျက်မည်',emp:'ကုန်ပစ္စည်းကိုနှိပ်၍ ထည့်ပါ',
-    sub:'ကြိုစုစုပေါင်း',tot:'ပေးရမည့်ငွေ',ins:'အရေအတွက်: {n}',low:'{n} သာကျန်',oos:'ကုန်သွားပြီ',
-    aprod:'ကုန်ထည့်မည်',eprod:'ကုန်ပြင်မည်',nprod:'ကုန်ပစ္စည်းအသစ်',
-    nm:'အမည်',pr:'အခြေခံဈေးနှုန်း (Ks)',st:'အရေအတွက်',cat:'အမျိုးအစား',
-    sv:'သိမ်းမည်',cn:'မလုပ်တော့',dl:'ဖျက်မည်',
-    tr:'ယနေ့ဝင်ငွေ',to:'ယနေ့အော်ဒါ',perr:'ကာလဝင်ငွေ',pero:'ကာလအော်ဒါ',
-    rec:'မကြာသေးမီ ရောင်းချမှုများ',nos:'ရောင်းချမှုမရှိသေး',dcsv:'CSV ထုတ်မည်',dpdf:'PDF ထုတ်မည်',
-    pby:'ငွေပေးချေမှု',astf:'ဝန်ထမ်းထည့်မည်',estf:'ဝန်ထမ်းပြင်မည်',nstf:'ဝန်ထမ်းအသစ်',
-    pin:'PIN (၄ လုံး)',rl:'တာဝန်',adm:'အုပ်ချုပ်သူ',cas:'ငွေကောက်',
-    sel:'မည်သူဆိုလဲ?',epin:'PIN ထည့်ပါ —',bk:'← နောက်သို့',
-    lgo:'ထွက်မည်',wpin:'PIN မှားသည်',sby:'ဝန်ထမ်း',
-    psal:'ကုန်ပစ္စည်းအနှစ်ချုပ်',pnm:'ကုန်ပစ္စည်း',qty:'အရေအတွက်',rv:'ဝင်ငွေ',
-    catex:'ဥပမာ - အစားအသောက်',fr:'စတင်',tw:'ဆုံးရက်',alt:'အားလုံး',tdy:'ယနေ့',
-    ini:'အတိုကောက် (၂–၃)',cpin:'PIN အသစ် (ထားသည်က မပြောင်း)',
-    cashRec:'လက်ခံငွေ',change:'အမ်းငွေ',short:'လိုနေသောငွေ',
-    exact:'အတိအကျ',quick:'မြန်ဆန်',confirmPay:'ငွေပေးချေမည်',dev:'ဖန်တီးသူ',
-    hasSizes:'အရွယ်အစားများ ရှိသည် (S/M/L)',addSize:'+ အရွယ်အစားထည့်',
-    sizeName:'အရွယ်အစား',sizePrice:'ဈေးနှုန်း (Ks)',pickSize:'အရွယ်အစားရွေးပါ',
-    sizes:'အရွယ်အစားများ'}
-};
+  my: {
+    app: 'POS စနစ်', // POS System is widely accepted, or 'အရောင်းကောင်တာစနစ်'
+    pos: 'POS အရောင်း', 
+    inv: 'ကုန်ပစ္စည်းစာရင်း', // Inventory
+    rep: 'အရောင်းစာရင်းချုပ်', // Reports / Sales summary
+    stf: 'ဝန်ထမ်းများ', 
+    srch: 'ကုန်ပစ္စည်း ရှာရန်…',
+    cart: 'ခြင်းတောင်း', // More natural for digital checkout than စျေးခြင်း
+    clr: 'ရှင်းလင်းမည်', // "Clear" (the cart)
+    emp: 'ကုန်ပစ္စည်းထည့်ရန် နှိပ်ပါ',
+    sub: 'စုစုပေါင်း', // Subtotal (just "Total" is fine contextually, or 'စုစုပေါင်းငွေ')
+    tot: 'ကျသင့်ငွေ', // Total payable amount (very standard)
+    ins: 'လက်ကျန်: {n}', // Stock status
+    low: '{n} ခုသာ ကျန်တော့သည်', 
+    oos: 'ပစ္စည်းပြတ်သွားပြီ', // Out of stock
+    aprod: 'ကုန်ပစ္စည်း ထည့်မည်',
+    eprod: 'ကုန်ပစ္စည်း ပြင်မည်',
+    nprod: 'ကုန်ပစ္စည်းအသစ်',
+    nm: 'အမည်',
+    pr: 'မူရင်းဈေးနှုန်း (Ks)',
+    st: 'ပစ္စည်းလက်ကျန်', // Stock quantity
+    cat: 'အမျိုးအစား',
+    sv: 'သိမ်းဆည်းမည်',
+    cn: 'ပယ်ဖျက်မည်', // Cancel
+    dl: 'ဖျက်ပစ်မည်', // Delete
+    tr: 'ယနေ့ရရှိငွေ',
+    to: 'ယနေ့အော်ဒါအရေအတွက်',
+    perr: 'သတ်မှတ်ကာလ ဝင်ငွေ',
+    pero: 'သတ်မှတ်ကာလ အော်ဒါ',
+    rec: 'လတ်တလော အရောင်းများ',
+    nos: 'အရောင်းစာရင်း မရှိသေးပါ',
+    dcsv: 'CSV ထုတ်ယူမည်',
+    dpdf: 'PDF ထုတ်ယူမည်',
+    pby: 'ငွေချေစနစ်', // Payment method/by
+    astf: 'ဝန်ထမ်းအသစ်ထည့်မည်',
+    estf: 'ဝန်ထမ်းအချက်အလက်ပြင်မည်',
+    nstf: 'ဝန်ထမ်းအသစ်',
+    pin: 'PIN နံပါတ် (၄ လုံး)',
+    rl: 'ရာထူး/တာဝန်',
+    adm: 'မန်နေဂျာ/အုပ်ချုပ်သူ', // Admin
+    cas: 'ငွေကိုင်', // Cashier (much more standard than ငွေကောက်)
+    sel: 'အသုံးပြုသူ ရွေးချယ်ပါ', // Natural translation for "Who are you?" in a system app
+    epin: 'PIN နံပါတ် ရိုက်ထည့်ပါ - ',
+    bk: '← နောက်သို့',
+    lgo: 'အကောင့်မှထွက်မည်',
+    wpin: 'PIN နံပါတ် မှားယွင်းနေပါသည်။ ပြန်လည်ကြိုးစားပါ။',
+    sby: 'ဝန်ထမ်းအလိုက်', // Filter/grouped staff
+    psal: 'ကုန်ပစ္စည်းအလိုက် အရောင်းပြဇယား',
+    pnm: 'ကုန်ပစ္စည်း',
+    qty: 'အရေအတွက်',
+    rv: 'ရရှိငွေ',
+    catex: 'ဥပမာ - အစားအသောက်၊ အအေး',
+    fr: 'စတင်သည့်ရက်',
+    tw: 'ကုန်ဆုံးမည့်ရက်',
+    alt: 'အချိန်လုံး', // All time
+    tdy: 'ယနေ့',
+    ini: 'အတိုကောက်အမည် (၂-၃ လုံး)',
+    cpin: 'PIN နံပါတ်အသစ် (မပြောင်းလဲလိုပါက ကွက်လပ်ထားပါ)',
+    cashRec: 'လက်ခံရရှိငွေ',
+    change: 'အမ်းငွေ',
+    short: 'လိုနေသေးသောငွေ',
+    exact: 'အကြွေအကျေ', // Exact cash amount
+    quick: 'ဖြတ်လမ်း', // Quick payment options
+    confirmPay: 'ငွေပေးချေမှုကို အတည်ပြုမည်',
+    dev: 'နည်းပညာပံ့ပိုးသူ', // Developed by
+    hasSizes: 'ဆိုဒ်/အရွယ်အစား ခွဲခြားမှု ရှိသည် (S / M / L စသည်)',
+    addSize: '+ အရွယ်အစား ထည့်မည်',
+    sizeName: 'အရွယ်အစား အမည်',
+    sizePrice: 'ဈေးနှုန်း (Ks)',
+    pickSize: 'အရွယ်အစား ရွေးချယ်ပါ',
+    sizes: 'အရွယ်အစားများ'
+}
 let lang='en';
 function t(k,v={}){let s=(TR[lang][k]||TR.en[k]||k);Object.keys(v).forEach(x=>{s=s.replace('{'+x+'}',v[x]);});return s;}
 function ks(n){return n.toLocaleString()+' Ks';}
