@@ -47,15 +47,6 @@ Live: **https://akihirozayar.github.io/akihirolabs-pos/**
 
 The app is pure static files, so it runs as-is on GitHub Pages (Settings → Pages → deploy from `main`).
 
-### Default logins
-
-| Staff     | Role    | PIN    |
-|-----------|---------|--------|
-| Admin     | Admin   | `1234` |
-| Cashier 1 | Cashier | `1111` |
-
-> ⚠️ Change these PINs in **Staff** after your first login.
-
 ## 📁 Project structure
 
 ```
