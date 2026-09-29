@@ -3,6 +3,11 @@
 All notable changes to **AkihiroLabs POS** are documented here.
 This project follows [Semantic Versioning](https://semver.org/).
 
+## [10.2.0] — 2026-09-29
+
+- New app logo in the AkihiroLabs family style (navy base, white symbol, orange accent): `app-icon.png`, `favicon.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`.
+- Favicon and home-screen icon now use the new logo instead of `assets/icon.png`.
+
 ## [10.1.0] — 2026-09-28
 
 ### Changed
